@@ -64,3 +64,27 @@ on:
   push:
   pull_request:
 ```
+
+## Workflow Runners
+
+We can think of <i>runners</i> as Virtual Servers or Virtual Machines that execute jobs from workflows.
+
+Two types:
+<ul>
+<li>GitHub Hosted - managed service by GitHub; steps share the same VM, but jobs don't</li>
+<li>Self Hosted - run workflows on almost any infrastructure of your choice</li>
+</ul>
+
+You can write the runner under `jobs` > `job-name` > `runs-on` property.
+```yaml
+name: workflow-name
+on:
+  push:
+  pull_request:
+jobs:
+  job-name:
+    runs-on: runner-name
+    steps:
+      - name: step-name
+        run: echo "sample"
+```
