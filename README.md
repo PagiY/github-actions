@@ -92,3 +92,6 @@ jobs:
 Keep in mind, if you have several jobs with different runners, the scripts may vary. Script from one runner may not be the same as a script from another runner.
 
 We can add a `shell` property under a step to indicate which shell are you using to execute the scripts.
+
+We can always check what softwares are included in a runner. GitHub has documentation.
+
