@@ -1,4 +1,4 @@
-name: workflow-events
+name: 02-workflow-events
 on: push
 jobs:
   echo:

@@ -42,7 +42,7 @@ Whenever a `steps` fails, the whole <i>workflow</i> is considered as FAILED. <b>
 
 There are several ways to trigger <i>workflows:</i>
 <ul>
-  <li><b>Repository events</b> - events that trigger workflows whenever there are changes in the repository</li>
+  <li><b>Repository events</b> - events that trigger workflows whenever there are changes or actions done on the repository</li>
   <li><b>Manual</b> - events that trigger workflows using the GH Actions UI, API calls, or from another workflow</li>
   <li><b>Scheduled</b> - Trigger workflows based on a set schedule, usually by a cron job</li>
 </ul>
