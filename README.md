@@ -36,3 +36,13 @@ jobs:
 
 Whenever a `steps` fails, the whole <i>workflow</i> is considered as FAILED. <b>Any subsequent steps will not execute.</b>
 
+## Workflow Events
+
+📝 <i>Check `.github/workflows/02-workflow-events.yaml` for a proper example</i>
+
+There are several ways to trigger <i>workflows:</i>
+<ul>
+  <li><b>Repository events</b> - events that trigger workflows whenever there are changes in the repository</li>
+  <li><b>Manual</b> - events that trigger workflows using the GH Actions UI, API calls, or from another workflow</li>
+  <li><b>Scheduled</b> - Trigger workflows based on a set schedule, usually by a cron job</li>
+</ul>
