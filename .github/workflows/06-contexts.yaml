@@ -1,5 +1,8 @@
 name: 06-contexts
-on: push
+run-name: My custom workflow run name - ${{ runner.os }}
+on:
+  push:
+  workflow_dispatch:
 jobs:
   echo-data:
     runs-on: ubuntu-latest
