@@ -56,7 +56,7 @@ on:
   - pull_request
 ```
 
-Or we can write an event as a key. This way, we can customize it further by specifying which branch can trigger the workflow
+Or we can write an event as a key. This way, we can customize it further by specifying which branch can trigger the workflow using <b>Event Filters</b>.
 
 ```yaml
 name: workflow-name
@@ -126,3 +126,75 @@ jobs:
         with:
           node-version: '20.x'
 ```
+## Event Filters
+
+GitHub Actions has a feature that can specify under which conditions trigger workflow. 
+
+Example:
+
+```yaml
+name: workflow-name
+on:
+  push:
+    branches:
+      - main
+      - 'release/**'
+    paths-ignore:
+      - 'docs/**'
+  pull_request:
+jobs:
+  job-name:
+    runs-on: runner-name
+    
+    steps:
+      - name: testing actions
+        uses: action/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+```
+
+In the example above, under we have two events: `push` and `pull_request`.
+
+When a `push` event happens on the main branch or branches whose names match `release/**` pattern, trigger the workflow.
+
+But when a `push` happens in the `docs/**` path, do not trigger the workflow. So we can ignore workflows from 
+running whenever changes to a folder or file happens.
+
+The workflow triggers for any `pull_request` event
+
+## Activity Types
+
+Specify which types of certain triggers execute the workflow. We can specify one or more activity types.
+
+Example:
+
+```yaml
+name: workflow-name
+on:
+  push:
+    branches:
+      - main
+      - 'release/**'
+    paths-ignore:
+      - 'docs/**'
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+      - 'release/**'
+jobs:
+  job-name:
+    runs-on: runner-name
+    
+    steps:
+      - name: testing actions
+        uses: action/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+```
+The above example specified which type of `pull_request` triggers the workflow.
+So whenever a `pull_request` is opened on `main` or branches on `release/**`, trigger the workflow.
