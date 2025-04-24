@@ -9,6 +9,8 @@ jobs:
       # 1. Checkout code from repository
       - name: Checkout Code
         uses: actions/checkout@v4
+      - name: Go inside react-app folder
+        run: cd react-app
       - name: Printing Folders
         run: ls
 
