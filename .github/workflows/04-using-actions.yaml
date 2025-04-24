@@ -9,10 +9,15 @@ jobs:
       # 1. Checkout code from repository
       - name: Checkout Code
         uses: actions/checkout@v4
-      - name: Go inside react-app folder
-        run: cd react-app
-      - name: Printing Folders
-        run: ls
+      # 2. Setup node js with version 20 or above
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      # 3. Install dependencies; Run the command in the working directory called react-app
+      - name: Install dependencies
+        run: npm run build
+        working-directory: react-app
 
           
           
