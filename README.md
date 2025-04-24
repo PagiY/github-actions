@@ -95,3 +95,34 @@ We can add a `shell` property under a step to indicate which shell are you using
 
 We can always check what softwares are included in a runner. GitHub has documentation.
 
+## Workflow Actions
+
+📝 <i>Check `.github/workflows/04-using-actions.yaml` for a proper example</i>
+
+Using actions instead of shell scripts.
+
+An example would be setting up a node project. Instead of writing scripts to setup node, we can use github's pre-made actions for easy setup. This avoids repetitive and extensive commands.
+
+An action can be configured via the `with` key-value pair - this enables great flexibility and reusability.
+
+An action can be combined with other steps.
+
+An action can be created for public or private use. Actions are not restricted to what's available in the marketplace. You can make your own action.
+
+```yaml
+name: workflow-name
+on:
+  push:
+  pull_request:
+jobs:
+  job-name:
+    runs-on: runner-name
+    
+    steps:
+      - name: testing actions
+        uses: action/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+```
