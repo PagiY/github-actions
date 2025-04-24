@@ -1,7 +1,5 @@
 name: 06-contexts
-on:
-  push:
-  workflow_dispatch:
+on: push
 jobs:
   echo-data:
     runs-on: ubuntu-latest

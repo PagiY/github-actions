@@ -198,3 +198,8 @@ jobs:
 ```
 The above example specified which type of `pull_request` triggers the workflow.
 So whenever a `pull_request` is opened on `main` or branches on `release/**`, trigger the workflow.
+
+## Workflow Contexts
+
+Contexts offer many sources of information for our workflows.
+Some contexts include information about runs, variables, jobs, and many more. 
