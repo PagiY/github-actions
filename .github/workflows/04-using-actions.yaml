@@ -5,6 +5,11 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    # defaults property sets default configs at the job level
+    # good for configs that is shared among steps under the same job
+    defaults:
+      run:
+        working-directory: react-app
     steps:
       # 1. Checkout code from repository
       - name: Checkout Code
@@ -17,7 +22,9 @@ jobs:
       # 3. Install dependencies; Run the command in the working directory called react-app
       - name: Install dependencies
         run: npm install
-        working-directory: react-app
+      # 4. Build react app
+      - name: Build react app
+        run: npm run build
 
           
           
