@@ -16,7 +16,7 @@ jobs:
           node-version: '20.x'
       # 3. Install dependencies; Run the command in the working directory called react-app
       - name: Install dependencies
-        run: npm run build
+        run: npm install
         working-directory: react-app
 
           
