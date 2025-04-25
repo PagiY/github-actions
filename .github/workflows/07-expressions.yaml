@@ -1,0 +1,17 @@
+name: 07-using-expressions
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      debug:
+        type: boolean
+        default: false
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ${{ inputs.debug }} Print when triggered from main
+        # Execute the run command if debug variable is set to true
+        if: inputs.debug == true
+        run: echo "I was triggered from main"
+
