@@ -1,7 +1,6 @@
 name: 07-using-expressions
 run-name: "07 - Using expressions | DEBUG - ${{ inputs.debug == true && 'on' || 'off' }} "
 on:
-  push:
   workflow_dispatch:
     inputs:
       debug:
@@ -18,7 +17,7 @@ jobs:
           echo "Triggered by: ${{ github.event_name }}"
           echo "Branch ${{ github.ref }}"
           echo "Commit SHA ${{ github.sha }}"
-          echo "Runner OS $RUNNER_OS"
+          echo "Runner OS ${{ runner.os }}"
       - name: "[${{ inputs.debug }}] Print when triggered from main"
         # Execute the run command if debug variable is set to true
         # and triggered from main branch
