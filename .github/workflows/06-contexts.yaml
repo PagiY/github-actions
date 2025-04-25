@@ -40,7 +40,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Display env variables via shell command
-        # This still works
+        # This still works, but outputs 'workflow' instead of 'step' since the variables that overwrites
+        # are not defined under this job
         run: |
           echo "Workflow env: $MY_WORKFLOW_VAR"
           echo "Overwritten env: $MY_OVERWRITTEN_VAR"
