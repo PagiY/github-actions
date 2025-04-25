@@ -1,8 +1,8 @@
 name: 06-contexts
 run-name: 06 - Contexts | Debug - ${{ inputs.debug }}
 on:
-  push:
   workflow_dispatch:
+    # inputs allow for modifiable configurations before running a workflow
     inputs:
       debug:
         type: boolean
@@ -32,7 +32,17 @@ jobs:
       - name: Print Env Variables
         env:
           MY_OVERWRITTEN_VAR: 'step'
+        # MY_OVERWRITTEN_VAR will output 'step'
         run: |
           echo "Workflow env: ${{ env.MY_WORKFLOW_VAR }}"
           echo "Overwritten env: ${{ env.MY_OVERWRITTEN_VAR }}"
+  echo-data-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display env variables via shell command
+        # This still works
+        run: |
+          echo "Workflow env: $MY_WORKFLOW_VAR"
+          echo "Overwritten env: $MY_OVERWRITTEN_VAR"
+  
   
