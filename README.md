@@ -201,5 +201,47 @@ So whenever a `pull_request` is opened on `main` or branches on `release/**`, tr
 
 ## Workflow Contexts
 
+📝 <i>Check `.github/workflows/06-contexts.yaml` for a proper example</i>
+
 Contexts offer many sources of information for our workflows.
-Some contexts include information about runs, variables, jobs, and many more. 
+Some contexts include information about runs, variables, jobs, and many more.
+
+Contexts can be accessed using the syntax: `${{ <context> }}`
+
+Some contexts can only be accessed under different workflow conditions.
+
+Context properties can be accessed using dot notation or brackets like so:
+`github.run_id` or `github['run_id']`
+
+## Expressions and Variables
+
+<b>Expressions</b> can be used to reference information from multiple sources within the workflow
+
+Uses the `${{ <expression> }}` syntax
+
+<i>NOTE: An exception is when you are using the expression in an `if` clause. The text after the `if` is already evaluated as an expression.</i>
+
+Can be any combination of:
+
+<ul>
+  <li>Literal Values - string, numbers, boolean, null</li>
+  <li>Context Values - values passed via the many workflow contexts</li>
+  <li>Functions - Built-in functions provided by GitHub Actions</li>
+</ul>
+
+<i>NOTE: It is better to create several workflows than have many `if` conditions in one workflow</i>
+
+<b>Variables</b> set and reuse non-sensitive configuration information
+
+Variables can either be used for a <b>single</b> workflow or <b>multiple</b> workflows
+
+The diagrams below illustrates how overriding works / the precedence when variables of the same name are defined in a workflow:
+
+<b>Single Workflow</b>
+
+step <b>--overrides--></b> job <b>--overrides--></b> workflow
+
+<b>Multiple Workflow</b>
+
+environment <b>--overrides--></b> repository <b>--overrides--></b> organization
+
