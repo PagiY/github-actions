@@ -1,0 +1,16 @@
+name: 08-variables
+on:
+  push:
+  workflow_dispatch:
+env:
+  WORKFLOW_VAR: "I am a workflow env var"
+  OVERWRITTEN: "I will be overwritten"
+jobs:
+  echo:
+    env:
+      JOB_VAR: "I am a job env var"
+      OVERWRITTEN: "I have been overwritten at the job level"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Print env variables"
+        run: echo ""
